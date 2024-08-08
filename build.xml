@@ -1,0 +1,52 @@
+<project name="CAB302_Project" default="all">
+    <target name="all" depends="clean, compile, documentation, test, mainJar"/>
+    <target name="compile">
+        <mkdir dir="Build" />
+        <javac srcdir="src" destdir="Build" includeantruntime="false"/>
+    </target>
+
+    <path id="junit.classpath">
+        <fileset dir="lib">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <target name="test" depends="compile">
+        <mkdir dir="BuildTests" />
+        <mkdir dir="BuildTestResults" />
+        <javac srcdir="unitTesting" destdir="BuildTests" includeantruntime="false">
+            <classpath refid="junit.classpath" />
+            <classpath location="Build" />
+        </javac>
+        <junitlauncher printsummary="true" failureproperty="junit.failure">
+            <classpath refid="junit.classpath" />
+            <classpath location="Build" />
+            <classpath location="BuildTests" />
+            <testclasses outputdir="BuildTestResults">
+                <fileset dir = "BuildTests" includes="**/*.class" />
+                <listener type="legacy-brief"/>
+            </testclasses>
+
+        </junitlauncher>
+        <fail if="junit.failure" />
+    </target>
+
+    <target name="documentation" depends="test">
+        <mkdir dir="Docs" />
+        <javadoc sourcepath="src" destdir="Docs" access="public" />
+    </target>
+
+    <target name="mainJar" depends="compile, test">
+        <mkdir dir="artifacts" />
+        <jar jarfile="artifacts/MarketPlace.jar" basedir="Build" manifest="mainJar-manifest.txt"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="Build" quiet="true" />
+        <delete dir="BuildTests" quiet="true" />
+        <delete dir="BuildTestResults" quiet="true" />
+        <delete dir="artifacts" quiet="true" />
+        <delete dir="Docs" quiet="true" />
+    </target>
+
+</project>

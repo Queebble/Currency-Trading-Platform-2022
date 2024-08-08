@@ -1,0 +1,45 @@
+package Common;
+
+/**
+ * These are the commands which will be sent across the network connection.
+ */
+public enum Command {
+    ADD_USER,
+    GET_USER,
+    GET_USER_SIZE,
+    DELETE_USER,
+    UPDATE_USER,
+    GET_USERS,
+    ADD_ORG,
+    GET_ORG,
+    GET_ORG_SIZE,
+    DELETE_ORG,
+    UPDATE_CREDITS,
+    GET_ORGS,
+    ADD_ASSET,
+    GET_ASSET,
+    GET_ASSET_SIZE,
+    DELETE_ASSET,
+    GET_ASSETS,
+    ADD_ORG_ASSET,
+    GET_ORG_ASSET_SIZE,
+    COUNT_ORGS_ASSETS,
+    GET_ORG_ASSET,
+    CHECK_ORG_ASSET,
+    DELETE_ORG_ASSET,
+    UPDATE_ORG_ASSET_QUANTITY,
+    GET_ORG_ASSETS,
+    ADD_ORDER,
+    GET_ORDERS,
+    GET_ASSET_ORDERS,
+    GET_ALL_ORDERS,
+    GET_ORDER,
+    DELETE_ORDER,
+    UPDATE_ORDER,
+    GET_ORDER_SIZE,
+    ADD_OLD_ORDER,
+    GET_OLD_ASSET_ORDERS,
+    GET_OLD_ORDER,
+    GET_OLD_ORDERS,
+    GET_OLD_ORDERS_SIZE
+}
